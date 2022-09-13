@@ -22,5 +22,8 @@ class Environment(BaseSettings):
     redis_pass: str = os.getenv("redis_pass", None)
     redis_prefix = os.getenv("redis_prefix", "fastapi")
 
+    # Model
+    model_name: str = "en_core_web_md"
+
 
 environment = Environment()

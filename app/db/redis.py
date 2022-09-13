@@ -49,7 +49,11 @@ class RedisConnection:
             Extended key: <environment_prefix>-<key_pattern>*
 
         Args:
-            key_pattern (str): Optional,
+            key_pattern (str): Optional, key pattern that is appended to the
+                                default key
+
+        Return:
+            count (int): Number of items deleted from the cache
         """
         count = 0
         key_match = environment.redis_prefix + "-"

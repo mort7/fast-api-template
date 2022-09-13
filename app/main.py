@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config.env import environment
 
 # Routers
-from app.controllers.price import price_router
+from app.controllers.nlp import nlp_router
 
 # Fast API
 app = FastAPI(title=environment.app_name, version=environment.app_version)
@@ -23,7 +23,7 @@ app.add_middleware(
 )
 
 # Add Routers
-app.include_router(price_router, prefix="/api/v1")
+app.include_router(nlp_router, prefix="/api/v1")
 
 
 @app.get("/")
@@ -31,4 +31,4 @@ async def root():
     """
     Run check endpoint
     """
-    return {"message": "Crypto Streaming API - Running"}
+    return {"message": "FastAPI Template - Running"}
