@@ -24,7 +24,7 @@ black = "^22.8.0"
 [tool.black]
 line-length = 80
 target-version= ['py37', 'py38']
-include = '\.pyi$'
+include = '\.pyi?$'
 
 [build-system]
 requires = ["poetry-core"]
