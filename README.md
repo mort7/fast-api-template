@@ -37,3 +37,8 @@ uvicorn app.main:app --host 0.0.0.0 --port 5000
 ```
 gunicorn --bind=0.0.0.0:5000 --workers=4 --worker-class=uvicorn.workers.UvicornWorker app.main:app
 ```
+
+## Docker
+```
+docker build -t fast-api-template .
+```
