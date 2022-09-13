@@ -35,5 +35,5 @@ uvicorn app.main:app --host 0.0.0.0 --port 5000
 
 ## Gunicorn
 ```
-gunicorn --bind=0.0.0.0 --workers=4 --worker-class=uvicorn.workers.UvicornWorker app.main:app
+gunicorn --bind=0.0.0.0:5000 --workers=4 --worker-class=uvicorn.workers.UvicornWorker app.main:app
 ```
