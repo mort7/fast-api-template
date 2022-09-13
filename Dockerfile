@@ -18,11 +18,14 @@ RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python
     poetry config virtualenvs.create false
 
 # Copy poetry.lock* incase it doesn't exist in the repo
-COPY .pyproject.toml .poetry.lock* /app/
+COPY pyproject.toml poetry.lock* /app/
 
 ARG INSTALL_DEV=false 
 
 RUN bash -c "if [$INSTALL_DEV] == 'true' ; then poetry install --no-root ; else poetry install --no-root --no-dev ; fi"
+
+# Install Spacy model
+RUN poetry run python3 -m spacy download en_core_web_md
 
 COPY ./app /app
 
