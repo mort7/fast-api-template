@@ -2,17 +2,17 @@
 NLP API Controller
 """
 
-# Imports
-import logging
-
 # FastAPI
 from fastapi import APIRouter, Response
+
+# Environment
+from app.config.env import environment
 
 # Model
 from app.utils.request_body import TextSimilarity, NLPEmbedding
 
 # Services
-from app.services.nlp import text_similarity, nlp_embedding
+from app.services.nlp import text_similarity
 
 # Exception
 from app.utils.exceptions import APIException
@@ -32,5 +32,5 @@ async def get_text_similarity(request_body: TextSimilarity, response: Response):
     except APIException as error:
         response.status_code = error.status_code
         message = error.system + " Error -" + error.message
-        logging.error(message)
+        environment.log.error(message)
         return {"message": message, "result": {}}

@@ -3,7 +3,6 @@ Spacy Language Model
 """
 
 # Imports
-import logging
 import spacy
 
 from scipy import spatial
@@ -20,12 +19,12 @@ class LanguageModel:
         """
         Load model
         """
-        logging.info("Loading model")
+        environment.log.info("Loading model")
         try:
             self.model = spacy.load(environment.model_name)
-            logging.info("Model load complete")
+            environment.log.info("Model load complete")
         except Exception as error:
-            logging.error(error)
+            environment.log.error(error)
 
     def text_similarity(self, text_one, text_two) -> float:
         """

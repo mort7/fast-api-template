@@ -4,6 +4,7 @@ Environment Configuration File
 
 # Imports
 import os
+import logging
 from pydantic import BaseSettings
 
 
@@ -15,6 +16,11 @@ class Environment(BaseSettings):
     # App settings
     app_name: str = "FastAPI Template"
     app_version: str = "0.1.0"
+
+    # Logging
+    log_name = "fastapi-template"
+    log = logging.getLogger(log_name)
+    logging.basicConfig(level=logging.INFO)
 
     # Redis
     redis_host: str = os.getenv("redis_host", "localhost")

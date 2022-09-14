@@ -67,6 +67,9 @@ class RedisConnection:
             self.cache.delete(key)
             count += 1
 
+        msg = f"Cleared {count} items from cache"
+        environment.log.info(msg)
+
         return count
 
 
